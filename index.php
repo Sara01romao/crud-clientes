@@ -26,7 +26,7 @@ include("db_config.php");
      <section class="container">
       
         <div>
-
+             <button class="btn btn-primary btn-criar">+ Novo</button>
         </div>
         
         <div class=" container tabela-container">
@@ -76,7 +76,7 @@ include("db_config.php");
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 2L7 7M12 12L7 7M7 7L2 12L12 2" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            Excluir   
+                            Remover
                         </button>
                         
                     </td>
@@ -90,7 +90,127 @@ include("db_config.php");
      </section>
 
      
+   <script>
+       $('button.btn-criar').on('click', function() {
+        
+        //criar form no modal
+        Swal.fire({
+                html: `
+                 <h1> Cadastrar Cliente</h1>
+                  <form id="createCustumer">
+                    
 
+                    <label for="customer_name">Nome do Cliente:</label>
+                    <input type="text" id="nome" name="nome"  required>
+                
+                    <br>
+
+                    <label for="customer_email">E-mail do Cliente:</label>
+                    <input type="email" id="email" name="email"  required>
+
+                    <br>
+
+                    <label for="customer_contact">Contato do Cliente:</label>
+                    <input type="tel" id="contato" name="contato" required>
+
+                    <br>
+                
+                  </form>
+                   
+                 
+                `,
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonText: `
+                    <i class="fa fa-thumbs-up"></i> Salvar
+                `,
+                confirmButtonAriaLabel: "Thumbs up, great!",
+              
+                 
+
+                
+                
+                preConfirm:()=>{
+
+                    var cliente_nome = document.getElementById("nome").value;
+                    var cliente_email = document.getElementById("email").value;
+                    var cliente_contato = document.getElementById("contato").value;
+
+                    // if(cliente_nome == '' || cliente_email == '' || cliente_contato  == ''  ){
+                    //   Swal.showValidationMessage(`
+                    //         <small>"Preencha os campos corretamente"</small>
+                    //   `);
+                    // }
+                    
+                    
+
+                    // Criar objeto com os valores do formulário
+                    var objetoCliente = {
+                        
+                        "cliente_nome": cliente_nome,
+                        "cliente_email": cliente_email ,
+                        "cliente_contato": cliente_contato,
+                        
+                    };
+
+                    console.table(objetoCliente)
+                    
+                    return objetoCliente ;
+                }
+
+
+                
+            }).then((result) => {
+                if (result.isConfirmed){
+
+                    var dataCreate = result.value;
+
+                    $.ajax({
+                    url: 'api.php',
+                    type: 'post',
+                    data: { dataCreate: JSON.stringify(dataCreate)},
+
+                    success: function (response) {
+                      
+                        var idNovoCliente = response;
+                        
+                        console.log(idNovoCliente)
+                        
+
+                        var novoCliente = `
+                            <tr>
+                                  <td>${dataCreate.cliente_nome}</td>
+                                  <td>${dataCreate.cliente_email}</td>
+                                  <td>${dataCreate.cliente_contato}</td>
+                                  <td><button data-id="${idNovoCliente}" class='btn btn-info btn-sm btn-edit'>Editar</button>
+                                  <button  data-id="${idNovoCliente.id}" class='btn-excluir btn btn-danger btn-sm btn-remover'>Remover</button>
+                                  </td>
+                              </tr>
+                        
+                        `
+                        
+                        Swal.fire({
+                          position: "center",
+                          icon: "success",
+                          title: "Adicionado com sucesso",
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
+
+
+                      $("table").append(novoCliente);
+
+                      
+                    }
+
+                  });
+                }
+                  
+              })
+      
+      });
+   </script>
 
 </body>
 </html>
