@@ -26,4 +26,24 @@ if(isset($_POST['dataCreate'])){
 }
 
 
+    if(isset($_POST['removerId'])){
+
+        $id = json_decode($_POST['removerId'], true);
+        
+        echo $id;
+        
+
+        $delete_sql = "DELETE FROM `clientes` WHERE clientes_id=$id";
+    
+        $result_update = mysqli_query($con, $delete_sql);
+        
+        $response = "ok";
+    
+        echo json_encode($response);
+        
+        
+
+    }
+
+
 ?>

@@ -91,6 +91,8 @@ include("db_config.php");
 
      
    <script>
+
+$(document).ready(function () {
        $('button.btn-criar').on('click', function() {
         
         //criar form no modal
@@ -173,22 +175,33 @@ include("db_config.php");
 
                     success: function (response) {
                       
-                        var idNovoCliente = response;
+                        var idNovoCliente = JSON.parse(response);
                         
                         console.log(idNovoCliente)
                         
 
                         var novoCliente = `
                             <tr>
-                                  <td>${dataCreate.cliente_nome}</td>
-                                  <td>${dataCreate.cliente_email}</td>
-                                  <td>${dataCreate.cliente_contato}</td>
-                                  <td><button data-id="${idNovoCliente}" class='btn btn-info btn-sm btn-edit'>Editar</button>
-                                  <button  data-id="${idNovoCliente.id}" class='btn-excluir btn btn-danger btn-sm btn-remover'>Remover</button>
-                                  </td>
-                              </tr>
-                        
-                        `
+                                <td>${dataCreate.cliente_nome}</td>
+                                <td>${dataCreate.cliente_email}</td>
+                                <td>${dataCreate.cliente_contato}</td>
+                                <td>
+                                    <button data-id="${idNovoCliente.id}" class='btn btn-info btn-sm btn-edit'>
+                                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.38215 2.36727L10.6326 5.61783L3.57442 12.6763L0.67641 12.9962C0.288452 13.0391 -0.0393326 12.7111 0.00383034 12.3231L0.326283 9.42293L7.38215 2.36727ZM12.643 1.88332L11.1168 0.357062C10.6407 -0.119021 9.86859 -0.119021 9.39253 0.357062L7.95673 1.79293L11.2072 5.04349L12.643 3.60762C13.119 3.13129 13.119 2.3594 12.643 1.88332Z" fill="white"/>
+                                      </svg>
+                                      Editar
+                                    </button>
+
+                                    <button data-id="${idNovoCliente.id}" class='btn-excluir btn btn-danger btn-sm'>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 2L7 7M12 12L7 7M7 7L2 12L12 2" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                     Remover
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
                         
                         Swal.fire({
                           position: "center",
@@ -208,8 +221,68 @@ include("db_config.php");
                 }
                   
               })
+
+
+
+
+           
       
       });
+
+
+
+
+              //remover
+              $('table').on('click', 'button.btn-excluir', function() {
+            
+            var removerId = $(this).data('id');
+            console.log(removerId)
+
+
+            Swal.fire({
+              title: "Tem certeza de que deseja remover?",
+              html:``,
+              confirmButtonText: "Remover",
+              showCancelButton: true,
+              cancelButtonText: "Cancelar",
+
+          }).then((result) => {
+           
+            if (result.isConfirmed) {
+              
+              $.ajax({
+                url: 'api.php',
+                type: 'post',
+                data: { removerId: JSON.stringify(removerId)},
+
+                success: function (response) {
+                  // var result = JSON.parse(response)
+                  console.log(response)
+
+
+                  
+
+
+                  Swal.fire({
+                      position: "center",
+                      icon: "success",
+                      title: "Removido com sucesso",
+                      showConfirmButton: false,
+                      timer: 1500
+                  });
+
+                  $(`table button[data-id="${removerId}"]`).closest('tr').remove()
+                }
+
+              });
+
+
+             
+            } 
+          });
+      });
+
+    });
    </script>
 
 </body>
