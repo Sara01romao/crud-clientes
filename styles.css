@@ -1,0 +1,25 @@
+
+.table {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+.table thead th{
+    border-bottom: none !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd){
+    background-color: #FAFAFA !important;
+}
+
+.table td, .table th{
+    border-top: none !important;
+    padding:10px !important;
+}
+
+
+.btn-acoes{
+    width: 100px;
+    border: 1px solid red;
+}
