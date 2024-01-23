@@ -113,6 +113,7 @@ include("db_config.php");
    <script>
 
 $(document).ready(function () {
+
        $('button.btn-criar').on('click', function() {
         
         //criar form no modal
@@ -254,10 +255,28 @@ $(document).ready(function () {
       });
 
 
+      //editar
+
+      //editar
+      $('table').on('click', 'button.btn-editar', function() {
+        var editId = $(this).data('id');
+
+        console.log(editId )
+
+        $.ajax({
+          url: 'api.php',
+          type: 'post',
+          data: { editId: editId },
+          success: function (response) {
 
 
-              //remover
-              $('table').on('click', 'button.btn-excluir', function() {
+          }
+        })
+
+      });
+
+      //remover
+      $('table').on('click', 'button.btn-excluir', function() {
             
             var removerId = $(this).data('id');
             console.log(removerId)

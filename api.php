@@ -42,7 +42,13 @@ include("db_config.php");
     if(isset($_POST['editarId'])){
         $id = json_decode($_POST['editarId'], true);
 
-        echo "id edit: " . $id;
+        $sqlresultCliente = "SELECT * FROM `clientes` WHERE `clientes_id` = $id";
+        $resultCliente = mysqli_query($con, $sqlresultCliente);
+        
+        $cliente = mysqli_fetch_assoc($resultCliente);
+
+        
+        
     }
 
 
