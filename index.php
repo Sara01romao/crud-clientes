@@ -274,7 +274,7 @@ $(document).ready(function () {
             console.log(clienteData.clientes_nome);
             Swal.fire({
                 html: `
-                 <h1> Cadastrar Cliente</h1>
+                 <h1> Editar Cadastrar</h1>
                   <form id="createCustumer">
                     
 
