@@ -39,14 +39,15 @@ include("db_config.php");
     }
 
 
-    if(isset($_POST['editarId'])){
-        $id = json_decode($_POST['editarId'], true);
+    if(isset($_POST['buscaId'])){
+        $id = json_decode($_POST['buscaId'], true);
 
         $sqlresultCliente = "SELECT * FROM `clientes` WHERE `clientes_id` = $id";
         $resultCliente = mysqli_query($con, $sqlresultCliente);
         
         $cliente = mysqli_fetch_assoc($resultCliente);
 
+         echo json_encode($cliente );
         
         
     }
