@@ -259,15 +259,91 @@ $(document).ready(function () {
 
       //editar
       $('table').on('click', 'button.btn-editar', function() {
-        var editId = $(this).data('id');
+        var buscaId = $(this).data('id');
 
-        console.log(editId )
+        console.log(buscaId )
 
         $.ajax({
           url: 'api.php',
           type: 'post',
-          data: { editId: editId },
+          data: { buscaId: buscaId },
           success: function (response) {
+            console.log(response)
+            var clienteData = JSON.parse(response);
+            
+            console.log(clienteData.clientes_nome);
+            Swal.fire({
+                html: `
+                 <h1> Cadastrar Cliente</h1>
+                  <form id="createCustumer">
+                    
+
+                    <label for="customer_name">Nome do Cliente:</label>
+                    <input type="text" id="nome" name="nome" value='${clienteData.clientes_nome}' required>
+                
+                    <br>
+
+                    <label for="customer_email">E-mail do Cliente:</label>
+                    <input type="email" id="email" name="email" value='${clienteData.clientes_email}' required>
+
+                    <br>
+
+                    <label for="customer_contact">Contato do Cliente:</label>
+                    <input type="tel" id="contato" name="contato" value='${clienteData.clientes_contato}' required>
+
+                    <br>
+                
+                  </form>
+                   
+                 
+                `,
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonText: `
+                    <i class="fa fa-thumbs-up"></i> Salvar
+                `,
+                confirmButtonAriaLabel: "Thumbs up, great!",
+              
+                 
+
+                
+                
+                preConfirm:()=>{
+
+                    var cliente_nome = document.getElementById("nome").value;
+                    var cliente_email = document.getElementById("email").value;
+                    var cliente_contato = document.getElementById("contato").value;
+
+                    // if(cliente_nome == '' || cliente_email == '' || cliente_contato  == ''  ){
+                    //   Swal.showValidationMessage(`
+                    //         <small>"Preencha os campos corretamente"</small>
+                    //   `);
+                    // }
+                    
+                    
+
+                    // Criar objeto com os valores do formulário
+                    var objetoCliente = {
+                        
+                        "cliente_nome": cliente_nome,
+                        "cliente_email": cliente_email ,
+                        "cliente_contato": cliente_contato,
+                        
+                    };
+
+                    console.table(objetoCliente)
+                    
+                    return objetoCliente ;
+                }
+
+
+                
+            })
+
+
+
+
 
 
           }
