@@ -325,7 +325,7 @@ $(document).ready(function () {
 
                     // Criar objeto com os valores do formulário
                     var objetoCliente = {
-                        
+                      "cliente_id": buscaId,
                         "cliente_nome": cliente_nome,
                         "cliente_email": cliente_email ,
                         "cliente_contato": cliente_contato,
@@ -339,8 +339,56 @@ $(document).ready(function () {
 
 
                 
-            })
+            }).then((result)=>{ 
+                if (result.isConfirmed){ 
+                    var editarValores = result.value
+                    console.log("edit",editarValores)
 
+                    
+
+                    $.ajax({
+                      url: 'api.php',
+                      type: 'post',
+                      data: { editarValores: JSON.stringify(editarValores)},
+                      success: function (response){
+                        // var result = JSON.parse(response)
+
+                        $(`table button[data-id="${buscaId}"]`).closest('tr').replaceWith(`
+                          <tr>
+                                  <td>${editarValores.cliente_nome}</td>
+                                  <td>${editarValores.cliente_email}</td>
+                                  <td>${editarValores.cliente_contato}</td>
+                                  <td class="d-flex justify-content-between btn-acoes">
+                                      <button data-id="${buscaId}" class='btn btn-success btn-sm btn-edit'>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M7.38215 2.36727L10.6326 5.61783L3.57442 12.6763L0.67641 12.9962C0.288452 13.0391 -0.0393326 12.7111 0.00383034 12.3231L0.326283 9.42293L7.38215 2.36727ZM12.643 1.88332L11.1168 0.357062C10.6407 -0.119021 9.86859 -0.119021 9.39253 0.357062L7.95673 1.79293L11.2072 5.04349L12.643 3.60762C13.119 3.13129 13.119 2.3594 12.643 1.88332Z" fill="white"/>
+                                        </svg>
+                                        
+                                      </button>
+
+                                      <button data-id="${buscaId}" class='btn-excluir btn btn-danger btn-sm'>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2 2L7 7M12 12L7 7M7 7L2 12L12 2" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        
+                                      </button>
+                                  </td>
+                              </tr>
+                        `);
+
+                        
+                      
+                        
+                        Swal.fire("Edição Concluída!");
+
+                        console.log(result)
+                      }
+
+
+                    })
+
+                  } 
+                })
 
 
 

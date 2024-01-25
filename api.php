@@ -52,6 +52,20 @@ include("db_config.php");
         
     }
 
+    if(isset($_POST['editarValores'])){
+        $clienteEdit_obj = json_decode($_POST['editarValores'], true);
+
+        $id =  $clienteEdit_obj['cliente_id'];
+        $nome =  $clienteEdit_obj['cliente_nome'];
+        $email =  $clienteEdit_obj['cliente_email'];
+        $contato =  $clienteEdit_obj['cliente_contato'];
+
+        $sqlEdit = "UPDATE `clientes` SET `clientes_nome`= '$nome',`clientes_email`= '$email',`clientes_contato`='$contato`' WHERE `clientes_id` = $id";
+        $resultCliente = mysqli_query($con, $sqlEdit);
+
+        echo "ok";
+    }
+
 
     if(isset($_POST['removerId'])){
 
@@ -79,9 +93,6 @@ include("db_config.php");
                 echo json_encode($response);
             }
         }
-        
-        
-        
         
 
     }
