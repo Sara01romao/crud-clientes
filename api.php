@@ -60,7 +60,7 @@ include("db_config.php");
         $email =  $clienteEdit_obj['cliente_email'];
         $contato =  $clienteEdit_obj['cliente_contato'];
 
-        $sqlEdit = "UPDATE `clientes` SET `clientes_nome`= '$nome',`clientes_email`= '$email',`clientes_contato`='$contato`' WHERE `clientes_id` = $id";
+        $sqlEdit = "UPDATE `clientes` SET `clientes_nome`= '$nome',`clientes_email`= '$email',`clientes_contato`='$contato' WHERE `clientes_id` = $id";
         $resultCliente = mysqli_query($con, $sqlEdit);
 
         echo "ok";
