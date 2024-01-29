@@ -23,3 +23,25 @@
     width: 100px;
     border: 1px solid red;
 }
+
+button .btn-criar{
+    margin: 0 0 0 auto;
+    display: block;
+}
+
+
+.campo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: 100%;
+}
+
+.campo-container input{
+    width: 100%;
+    height: 38px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+

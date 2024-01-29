@@ -47,6 +47,8 @@ include("db_config.php");
             </div>
              <button class="btn btn-primary btn-criar">+ Novo</button>
         </div>
+
+        
         
         <div class=" container tabela-container">
             <table class="table table-striped table-sm">
@@ -122,20 +124,22 @@ $(document).ready(function () {
                  <h1> Cadastrar Cliente</h1>
                   <form id="createCustumer">
                     
-
-                    <label for="customer_name">Nome do Cliente:</label>
-                    <input type="text" id="nome" name="nome"  required>
-                
+                    <div class="campo-container">
+                      <label for="customer_name">Nome do Cliente:</label>
+                      <input type="text" id="nome" name="nome"  required>
+                    </div>
                     <br>
 
-                    <label for="customer_email">E-mail do Cliente:</label>
-                    <input type="email" id="email" name="email"  required>
-
+                    <div class="campo-container">
+                      <label for="customer_email">E-mail do Cliente:</label>
+                      <input type="email" id="email" name="email"  required>
+                    </div>
                     <br>
 
-                    <label for="customer_contact">Contato do Cliente:</label>
-                    <input type="tel" id="contato" name="contato" required>
-
+                    <div class="campo-container">
+                      <label for="customer_contact">Contato do Cliente:</label>
+                      <input type="tel" id="contato" name="contato" required>
+                    </div>
                     <br>
                 
                   </form>
@@ -255,7 +259,7 @@ $(document).ready(function () {
       });
 
 
-      //editar
+      
 
       //editar
       $('table').on('click', 'button.btn-editar', function() {
