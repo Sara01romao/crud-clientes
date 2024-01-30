@@ -25,8 +25,8 @@ include("db_config.php");
     
      <section class="container">
       
-        <div>
-            <div>
+        
+            <div class="header-table">
               <h1>
                 Clientes
                  <?php
@@ -42,11 +42,12 @@ include("db_config.php");
                  ?>
 
                  <span class="total_cliente"><?php  echo $row["total_clientes"];?></span>
-               
+                 
               </h1>
+              <button class="btn btn-primary btn-criar">+ Novo</button>
             </div>
-             <button class="btn btn-primary btn-criar">+ Novo</button>
-        </div>
+             
+        
 
         
         
@@ -333,11 +334,11 @@ $(document).ready(function () {
                     var cliente_email = document.getElementById("email").value;
                     var cliente_contato = document.getElementById("contato").value;
 
-                    // // if(cliente_nome == '' || cliente_email == '' || cliente_contato  == ''  ){
-                    // //   Swal.showValidationMessage(`
-                    // //         <small>"Preencha os campos corretamente"</small>
-                    // //   `);
-                    // // }
+                    if(cliente_nome == '' || cliente_email == '' || cliente_contato  == ''  ){
+                      Swal.showValidationMessage(`
+                           <small>"Preencha os campos corretamente"</small>
+                      `);
+                    }
                     
                     
 
