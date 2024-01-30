@@ -30,6 +30,16 @@ button .btn-criar{
 }
 
 
+.title-form{
+    font-size: 2rem;
+    color: #7066e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
 .campo-container{
     display: flex;
     flex-direction: column;
@@ -42,6 +52,16 @@ button .btn-criar{
     height: 38px;
     border-radius: 5px;
     border: 1px solid grey;
+    padding: 0px 10px;
 }
+
+
+.campo-container label{
+    color: #000;
+
+}
+
+
+
 
 

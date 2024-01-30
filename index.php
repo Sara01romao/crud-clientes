@@ -121,24 +121,31 @@ $(document).ready(function () {
         //criar form no modal
         Swal.fire({
                 html: `
-                 <h1> Cadastrar Cliente</h1>
+                 <h1 class="title-form"> 
+                 <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 2V11.5M12.5 21V11.5M12.5 11.5H22M12.5 11.5H2" stroke="#7066E0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                 </svg>
+
+
+                   Cadastrar Cliente
+                 </h1>
                   <form id="createCustumer">
                     
                     <div class="campo-container">
-                      <label for="customer_name">Nome do Cliente:</label>
-                      <input type="text" id="nome" name="nome"  required>
+                      <label for="customer_name">Nome</label>
+                      <input type="text" id="nome" name="nome"  placeholder="Seu Nome" required>
                     </div>
                     <br>
 
                     <div class="campo-container">
-                      <label for="customer_email">E-mail do Cliente:</label>
-                      <input type="email" id="email" name="email"  required>
+                      <label for="customer_email">E-mail</label>
+                      <input type="email" id="email" name="email"  placeholder="Seu email" required>
                     </div>
                     <br>
 
                     <div class="campo-container">
-                      <label for="customer_contact">Contato do Cliente:</label>
-                      <input type="tel" id="contato" name="contato" required>
+                      <label for="customer_contact">Contato</label>
+                      <input type="tel" id="contato" name="contato" placeholder="(11) 99999-99999" required>
                     </div>
                     <br>
                 
@@ -164,11 +171,11 @@ $(document).ready(function () {
                     var cliente_email = document.getElementById("email").value;
                     var cliente_contato = document.getElementById("contato").value;
 
-                    // if(cliente_nome == '' || cliente_email == '' || cliente_contato  == ''  ){
-                    //   Swal.showValidationMessage(`
-                    //         <small>"Preencha os campos corretamente"</small>
-                    //   `);
-                    // }
+                     if(cliente_nome == '' || cliente_email == '' || cliente_contato  == ''  ){
+                      Swal.showValidationMessage(`
+                             <small>"Preencha os campos corretamente"</small>
+                       `);
+                     }
                     
                     
 
