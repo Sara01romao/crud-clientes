@@ -16,7 +16,9 @@ include("db_config.php");
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' type='text/javascript'></script>
-    
+
+   
+  
      <!-- sweetalert-->
     <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.10.2/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.2/dist/sweetalert2.min.css" rel="stylesheet">
@@ -113,12 +115,23 @@ include("db_config.php");
      </section>
 
      
-   <script>
+     
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
 
-$(document).ready(function () {
+   
+<script>
 
-       $('button.btn-criar').on('click', function() {
-        
+        $(document).ready(function(){
+            $("#contato").inputmask('(99) 99999-9999')
+        })
+     
+  $(document).ready(function () {
+       
+   
+       
+      $('button.btn-criar').on('click', function() {
+       
         //criar form no modal
         Swal.fire({
                 html: `
@@ -146,7 +159,7 @@ $(document).ready(function () {
 
                     <div class="campo-container">
                       <label for="customer_contact">Contato</label>
-                      <input type="tel" id="contato" name="contato" placeholder="(11) 99999-99999" required>
+                      <input type="text" id="contato" name="contato" placeholder="(11) 99999-99999" required>
                     </div>
                     <br>
                 
@@ -154,6 +167,9 @@ $(document).ready(function () {
                    
                  
                 `,
+                didOpen: function() {
+                    $('#contato').inputmask('(99) 99999-9999');
+                },
                 showCloseButton: true,
                 showCancelButton: false,
                 focusConfirm: false,
@@ -171,7 +187,7 @@ $(document).ready(function () {
                     var cliente_nome = document.getElementById("nome").value;
                     var cliente_email = document.getElementById("email").value;
                     var cliente_contato = document.getElementById("contato").value;
-
+                    
                      if(cliente_nome == '' || cliente_email == '' || cliente_contato  == ''  ){
                       Swal.showValidationMessage(`
                              <small>"Preencha os campos corretamente"</small>
@@ -477,8 +493,10 @@ $(document).ready(function () {
           });
       });
 
-    });
-   </script>
+      
+
+  });
+</script>
 
 </body>
 </html>
