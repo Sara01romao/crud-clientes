@@ -396,11 +396,18 @@ $(document).ready(function () {
                         `);
 
                         
-                      
+                        Swal.fire({
+                          position: "center",
+                          icon: "success",
+                          title: "Edição Concluída!",
+                          showConfirmButton: false,
+                          timer: 1500
+                       });
+                          
                         
-                        Swal.fire("Edição Concluída!");
+                        
 
-                        console.log(result)
+                        
                       }
 
 
