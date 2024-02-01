@@ -20,6 +20,7 @@ Front-end
 ## Back-end
 ```
   PHP
+  MySQL
 ```
 ## 🎲 Banco de dados 
 
