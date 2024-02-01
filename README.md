@@ -1,5 +1,7 @@
 # crud-clientes
-![editar](https://github.com/Sara01romao/crud-clientes/assets/46323667/1ed8b061-0bc7-45e5-a353-25f21fc56b41)
+![editar-cadastro](https://github.com/Sara01romao/crud-clientes/assets/46323667/54e75c16-cc8b-4d1e-8653-bee5eb98f705)
+
+
 
 ## 💻  Sobre o Projeto
 
