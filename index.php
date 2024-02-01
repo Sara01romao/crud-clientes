@@ -259,7 +259,7 @@ function formatar_telefone($telefone){
                                 <td>${dataCreate.cliente_email}</td>
                                 <td>${dataCreate.cliente_contato}</td>
                                 <td class="d-flex justify-content-between btn-acoes">
-                                    <button data-id="${clienteResponse.id}" class='btn btn-success btn-sm btn-edit'>
+                                    <button data-id="${clienteResponse.id}" class='btn-editar btn btn-success btn-sm '>
                                       <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.38215 2.36727L10.6326 5.61783L3.57442 12.6763L0.67641 12.9962C0.288452 13.0391 -0.0393326 12.7111 0.00383034 12.3231L0.326283 9.42293L7.38215 2.36727ZM12.643 1.88332L11.1168 0.357062C10.6407 -0.119021 9.86859 -0.119021 9.39253 0.357062L7.95673 1.79293L11.2072 5.04349L12.643 3.60762C13.119 3.13129 13.119 2.3594 12.643 1.88332Z" fill="white"/>
                                       </svg>
