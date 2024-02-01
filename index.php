@@ -166,19 +166,19 @@ function formatar_telefone($telefone){
                     
                     <div class="campo-container">
                       <label for="customer_name">Nome</label>
-                      <input type="text" id="nome" name="nome"  placeholder="Seu Nome" required>
+                      <input type="text" id="nome" name="nome" autocomplete="off" placeholder="Seu Nome" required>
                     </div>
                     <br>
 
                     <div class="campo-container">
                       <label for="customer_email">E-mail</label>
-                      <input type="email" id="email" name="email"  placeholder="Seu email" required>
+                      <input type="email" id="email" name="email" autocomplete="off" placeholder="Seu email" required>
                     </div>
                     <br>
 
                     <div class="campo-container">
                       <label for="customer_contact">Contato</label>
-                      <input type="text" id="contato" name="contato" placeholder="(11) 99999-99999" required>
+                      <input type="text" id="contato" name="contato" autocomplete="off" placeholder="(11) 99999-99999" required>
                     </div>
                     <br>
                 
@@ -333,18 +333,18 @@ function formatar_telefone($telefone){
                     
                   <div class="campo-container">
                     <label for="customer_name">Nome </label>
-                    <input type="text" id="nome" name="nome"  placeholder="Seu Nome" value='${clienteData.clientes_nome}' required>
+                    <input type="text" id="nome" name="nome" autocomplete="off" placeholder="Seu Nome" value='${clienteData.clientes_nome}' required>
                   </div>
                     <br>
                   <div class="campo-container">
                     <label for="customer_email">E-mail</label>
-                    <input type="email" id="email" name="email"  placeholder="Seu Email" value='${clienteData.clientes_email}' required>
+                    <input type="email" id="email" name="email" autocomplete="off" placeholder="Seu Email" value='${clienteData.clientes_email}' required>
                   </div>
                     <br>
                     
                     <div class="campo-container">
                     <label for="customer_contact">Contato</label>
-                    <input type="tel" id="contato" name="contato"  placeholder="(11) 99999-99999" value='${clienteData.clientes_contato}' required>
+                    <input type="tel" id="contato" name="contato"  autocomplete="off" placeholder="(11) 99999-99999" value='${clienteData.clientes_contato}' required>
                     </div>
                     <br>
                 
