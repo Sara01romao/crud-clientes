@@ -1,6 +1,16 @@
 
 <?php
 include("db_config.php");
+
+
+function formatar_telefone($telefone){
+    
+  $ddd = substr($telefone, 0, 2); //começa no 0 até o dois
+  $parte1 = substr($telefone, 2, 5);;//do 2 ate o 5
+  $parte2= substr($telefone, 7);//7 em diante
+  return "($ddd) $parte1-$parte2";
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +86,16 @@ include("db_config.php");
                             $id= $array['clientes_id'];
                             $nome= $array['clientes_nome'];
                             $email= $array['clientes_email'];
-                            $contato= $array['clientes_contato'];
+
+
+                             //formatar o telefone para mostrar
+                              $telefone = "Não informado.";
+                              if(!empty($array['clientes_contato'])){
+                                $contato = formatar_telefone($array['clientes_contato']);
+                              }
+
+                          
+                            
                             
 
                             
@@ -187,6 +206,7 @@ include("db_config.php");
                     var cliente_nome = document.getElementById("nome").value;
                     var cliente_email = document.getElementById("email").value;
                     var cliente_contato = document.getElementById("contato").value;
+                    
                     
                      if(cliente_nome == '' || cliente_email == '' || cliente_contato  == ''  ){
                       Swal.showValidationMessage(`
@@ -332,6 +352,9 @@ include("db_config.php");
                    
                  
                 `,
+                didOpen: function() {
+                    $('#contato').inputmask('(99) 99999-9999');
+                },
                 showCloseButton: true,
                 showCancelButton: false,
                 focusConfirm: false,

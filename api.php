@@ -7,9 +7,13 @@ include("db_config.php");
 
         $nome = $customerCreate_obj['cliente_nome'];
         $email = $customerCreate_obj['cliente_email'];
-        $contato = $customerCreate_obj['cliente_contato'];
-
+        $telefone= $customerCreate_obj['cliente_contato'];
         
+        $contato = preg_replace("/[^0-9]/", "", $telefone); 
+        
+       
+      
+       
         
         $create_sql = "INSERT INTO `clientes`  (`clientes_nome`, `clientes_email`, `clientes_contato`) VALUES ('$nome', '$email', '$contato')";
     
@@ -58,7 +62,11 @@ include("db_config.php");
         $id =  $clienteEdit_obj['cliente_id'];
         $nome =  $clienteEdit_obj['cliente_nome'];
         $email =  $clienteEdit_obj['cliente_email'];
-        $contato =  $clienteEdit_obj['cliente_contato'];
+        $telefone=  $clienteEdit_obj['cliente_contato'];
+
+        
+        
+        $contato = preg_replace("/[^0-9]/", "", $telefone); 
 
         $sqlEdit = "UPDATE `clientes` SET `clientes_nome`= '$nome',`clientes_email`= '$email',`clientes_contato`='$contato' WHERE `clientes_id` = $id";
         $resultCliente = mysqli_query($con, $sqlEdit);
