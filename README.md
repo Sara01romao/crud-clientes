@@ -1,12 +1,26 @@
 # crud-clientes
+![editar](https://github.com/Sara01romao/crud-clientes/assets/46323667/1ed8b061-0bc7-45e5-a353-25f21fc56b41)
 
+## 💻  Sobre o Projeto
 
+A crud de controle de clientes,  objetivo foi praticar o uso do ajax e sweetalert2. 
 
+<br>
 
+## :rocket: Tecnologias Usadas
+Front-end 
+```
+  Bootstrap
+  SweetAlert2
+  Ajax
+```
 
-
-
+## Back-end
+```
+  PHP
+```
 ## 🎲 Banco de dados 
+
 Tabela Clientes
 ```
 CREATE TABLE `clientes` ( 
